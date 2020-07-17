@@ -22,8 +22,8 @@ public class Tester {
         cd_2.setIsAvailable(false);
         cd_2.setComments("CD_2 comments");
 
-        db.addCD(cd_1);
-        db.addCD(cd_2);
+        db.addItem(cd_1);
+        db.addItem(cd_2);
 
         var dvd_1 = new DVD();
         dvd_1.setTitle("DVD_1 title");
@@ -39,8 +39,8 @@ public class Tester {
         dvd_2.setIsAvailable(true);
         dvd_2.setComments("DVD_2 comments");
 
-        db.addDVD(dvd_1);
-        db.addDVD(dvd_2);
+        db.addItem(dvd_1);
+        db.addItem(dvd_2);
 
         db.ListAllItems();
 

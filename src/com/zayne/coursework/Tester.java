@@ -11,6 +11,7 @@ public class Tester {
         cd_1.setArtist("CD_1 artist");
         cd_1.setNumOfTracks(20);
         cd_1.setPlayingTime(50);
+        cd_1.setIsAvailable(true);
         cd_1.setComments("CD_1 comments");
 
         var cd_2 = new CD();
@@ -18,6 +19,7 @@ public class Tester {
         cd_2.setArtist("CD_2 artist");
         cd_2.setNumOfTracks(20);
         cd_2.setPlayingTime(50);
+        cd_2.setIsAvailable(false);
         cd_2.setComments("CD_2 comments");
 
         db.addCD(cd_1);

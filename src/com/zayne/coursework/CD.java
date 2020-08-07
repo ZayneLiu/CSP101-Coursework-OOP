@@ -19,10 +19,6 @@ public class CD extends Item {
     }
 
     // Setters
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public void setArtist(String artist) {
         this.artist = artist;
     }
@@ -32,12 +28,12 @@ public class CD extends Item {
     }
 
     public void Print(){
-        System.out.printf("Title: \t\t%s\n",title);
-        System.out.printf("Artist: \t%s\n",artist);
-        System.out.printf("Tracks: \t%s\n",numOfTracks);
-        System.out.printf("Time: \t\t%s\n",playingTime);
-        System.out.printf("Available: \t%s\n",isAvailable);
-        System.out.printf("Comments: \t%s\n",comments);
+        System.out.printf("Title: \t\t%s\n",getTitle());
+        System.out.printf("Artist: \t%s\n",getArtist());
+        System.out.printf("Tracks: \t%s\n",getNumOfTracks());
+        System.out.printf("Time: \t\t%s\n",getPlayingTime());
+        System.out.printf("Available: \t%s\n",getIsAvailable());
+        System.out.printf("Comments: \t%s\n",getComments());
         System.out.println("-------------------");
     }
 }

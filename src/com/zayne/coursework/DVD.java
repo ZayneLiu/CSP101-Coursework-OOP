@@ -12,29 +12,21 @@ public class DVD extends Item {
     private String director;
 
     // Getters
-    public String getTitle() {
-        return title;
-    }
-
     public String getDirector() {
         return director;
     }
 
     // Setters
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public void setDirector(String director) {
         this.director = director;
     }
 
     public void Print(){
-        System.out.printf("Title: \t\t%s\n",title);
-        System.out.printf("Director: \t%s\n",director);
-        System.out.printf("Time: \t\t%s\n",playingTime);
-        System.out.printf("Available: \t%s\n",isAvailable);
-        System.out.printf("Comments: \t%s\n",comments);
+        System.out.printf("Title: \t\t%s\n",getTitle());
+        System.out.printf("Director: \t%s\n",getDirector());
+        System.out.printf("Time: \t\t%s\n",getPlayingTime());
+        System.out.printf("Available: \t%s\n",getIsAvailable());
+        System.out.printf("Comments: \t%s\n",getComments());
         System.out.println("-------------------");
     }
 

@@ -1,4 +1,9 @@
 # Report <!-- omit in toc -->
+### Module: CSP-101 Programming Paradigm
+
+### Name: Lanzheng Liu (Zayne)
+
+### HIC ID: 31423
 # Table of Contents <!-- omit in toc -->
 - [Procedural](#procedural)
 - [OOP](#oop)
@@ -13,6 +18,10 @@
         - [Child class `CD.java`](#child-class-cdjava)
         - [Child class `DVD.java`](#child-class-dvdjava)
   - [Polymorphism](#polymorphism)
+        - [`Item.java`](#itemjava)
+        - [`DVD.java`](#dvdjava)
+        - [`CD.java`](#cdjava)
+- [Conclusion](#conclusion)
 - [References](#references)
 
 # Procedural
@@ -321,7 +330,49 @@ Here's a detailed access level table for access modifiers (Oracle, 2020).
 |             `private`             | :heavy_check_mark: |                    |                    |                    |
 
 ## Polymorphism
-Explain how inheritance and polymorphism makes programming easy to code and understand based on the level 2 and level 3 of your coursework. Do not forget to relate to the code where applicable.
+Polymorphism provides a way for a child class to define its own version of a method which the child class inherited from its parent class, this process is called method `overriding`.
+##### `Item.java`
+```java
+public class Item{
+    public void Print(){
+
+    }
+}
+```
+##### `DVD.java`
+```java
+public class DVD extends Item {
+    // Overriding parent method `Print()`
+    public void Print(){
+        System.out.printf("Title: \t\t%s\n",getTitle());
+        System.out.printf("Director: \t%s\n",getDirector());
+        System.out.printf("Time: \t\t%s\n",getPlayingTime());
+        System.out.printf("Available: \t%s\n",getIsAvailable());
+        System.out.printf("Comments: \t%s\n",getComments());
+        System.out.println("-------------------");
+    }
+}
+```
+##### `CD.java`
+```java
+public class CD extends Item {
+    // Overriding parent method `Print()`
+    public void Print(){
+        System.out.printf("Title: \t\t%s\n",getTitle());
+        System.out.printf("Artist: \t%s\n",getArtist());
+        System.out.printf("Tracks: \t%s\n",getNumOfTracks());
+        System.out.printf("Time: \t\t%s\n",getPlayingTime());
+        System.out.printf("Available: \t%s\n",getIsAvailable());
+        System.out.printf("Comments: \t%s\n",getComments());
+        System.out.println("-------------------");
+    }
+}
+```
+
+Apart from its usage with inheritance, polymorphism its self can alter the behaviour of any method by simply `overloading` the method with same method name, but different function signature(parameter names, parameter types and order of parameters ).
+___
+# Conclusion
+Encapsulation, Inheritance and Polymorphism as the foundation of OOP, provides us with the ability to describe and structure data with complex relationship with encapsulation, reducing the amount of code repeated by improving code re-usability with inheritance, and increasing the flexibility of class behaviours with polymorphism.
 
 <div style="page-break-after: always;"></div>
 

@@ -4,6 +4,15 @@
 - [OOP](#oop)
 - [Differences between Procedural & Object-Oriented Programming Paradigm](#differences-between-procedural--object-oriented-programming-paradigm)
 - [Benefits of Inheritance and Polymorphism](#benefits-of-inheritance-and-polymorphism)
+  - [Inheritance](#inheritance)
+    - [Before inheritance](#before-inheritance)
+        - [Class CD](#class-cd)
+        - [Class DVD](#class-dvd)
+    - [After inheritance](#after-inheritance)
+        - [Parent class `Item.java`](#parent-class-itemjava)
+        - [Child class `CD.java`](#child-class-cdjava)
+        - [Child class `DVD.java`](#child-class-dvdjava)
+  - [Polymorphism](#polymorphism)
 - [References](#references)
 
 # Procedural
@@ -89,6 +98,10 @@ package com.zayne.coursework;
 import java.util.ArrayList;
 
 public class Database {
+   // Constructor function, is used to initialise data when creating the instance.
+    public Database(){
+
+    }
 	// Class member & ArrayList definition.
     public static ArrayList<Item> itemList = new ArrayList<>(20) {
 		// Overriding add method.
@@ -154,16 +167,11 @@ Whereas object-oriented programming paradigm is based on the concept of modeling
 ```java
 public class Database {
     // Data.
-    /** Store CDs/DVDs information */
     public static ArrayList<Item> itemsList = new ArrayList<>(20);
 
     // Behaviours - START
-    /** Add CD/DVD items to the storage */
-    public void addItem(Item item) {
-        itemsList.add(item);
-    }
+    public void addItem(Item item) { itemsList.add(item); }
 
-    /** Print all item in the database */
     public void ListAllItems() {
         System.out.println("====== Items ======");
         // Foreach loop to iterate through `itemList`
@@ -177,29 +185,146 @@ public class Database {
 
 Essentially, object-oriented programming empowers procedural programming with a much better way to describe and structure data while keeping the concepts of *Variables* and *Procedures*.
 
-Also, in the code below, each instance of `Item` class has a different set of values for their non-static properties (in this case, the value of protected member `title`), the keyword `this` is used to refer to the current instance, in order to access instance specific data.
+Also, in the code below, each instance of `Item` class has a different set of values for their non-static properties (in this case, the value of protected member `title`), the keyword `this` is used to refer to the current instance, in order to access instance specific data (Troelsen, 2012).
 ```java
 public class Item {
-    /** The title of the CD/DVD. */
     protected String title;
-    // Getters
-    public String getTitle() {
-        return title;
-    }
-    // Setters
-    public void setTitle(String title){
-        this.title = title;
-    }
-    public void Print(){
 
-    }
+    // Getters
+    public String getTitle() { return title; }
+
+    // Setters
+    public void setTitle(String title) { this.title = title; }
+    public void Print() { }
 }
 ```
 
+The process of wrapping different kinds of data related to a certain type of object is called *Encapsulation*, which is the first pilar of OOP (Troelsen, 2012).
+
 # Benefits of Inheritance and Polymorphism
+
+## Inheritance
+The concept of inheritance in OOP is created to further describe the relationships between modeled 'real-world objects' (i.e. the relationship between different classes). Inheritance makes some shared code reusable (i.e. less code repeated), by describing it with a parent-child relationship. Parent class has the shared logic (i.e. common properties and methods), and all child classes can inherit the shared data from their parent class.
+### Before inheritance
+##### Class CD
+```java
+public class CD {
+    protected String title;
+    protected int playingTime;
+    protected boolean isAvailable;
+    protected String comments;
+    private String artist;
+    private int numOfTracks;
+
+    // Getters
+    public String getTitle() { return title; }
+    public int getPlayingTime() { return playingTime; }
+    public boolean getIsAvailable() { return isAvailable; }
+    public String getComments() { return comments; }
+    public String getArtist() { return artist; }
+    public int getNumOfTracks() { return numOfTracks; }
+
+    // Setters
+    public void setArtist(String artist) { this.artist = artist; }
+    public void setNumOfTracks(int numOfTracks) { this.numOfTracks = numOfTracks; }
+    public void setTitle(String title) { this.title = title; }
+    public void setPlayingTime(int playingTime) { this.playingTime = playingTime; }
+    public void setIsAvailable(boolean available) { isAvailable = available; }
+    public void setComments(String comments) { this.comments = comments; }
+}
+```
+##### Class DVD
+```java
+public class DVD {
+    protected String title;
+    protected int playingTime;
+    protected boolean isAvailable;
+    protected String comments;
+    private String director;
+
+    // Getters
+    public String getTitle() { return title; }
+    public int getPlayingTime() { return playingTime; }
+    public boolean getIsAvailable() { return isAvailable; }
+    public String getComments() { return comments; }
+    public String getDirector() { return director; }
+
+    // Setters
+    public void setTitle(String title){ this.title = title; }
+    public void setPlayingTime(int playingTime) { this.playingTime = playingTime; }
+    public void setIsAvailable(boolean available) { isAvailable = available; }
+    public void setComments(String comments) { this.comments = comments; }
+    public void setDirector(String director) { this.director = director; }
+}
+```
+There are many duplicated code in the example above as you might noticed. However with inheritance, we can avoid writing huge amount of repeated code by extract duplicated information into a parent class (i.e. super class).
+___
+### After inheritance
+##### Parent class `Item.java`
+```java
+public class Item {
+    protected String title;
+    protected int playingTime;
+    protected boolean isAvailable;
+    protected String comments;
+
+    // Getters
+    public String getTitle() { return title; }
+    public int getPlayingTime() { return playingTime; }
+    public boolean getIsAvailable() { return isAvailable; }
+    public String getComments() { return comments; }
+
+    // Setters
+    public void setTitle(String title){ this.title = title; }
+    public void setPlayingTime(int playingTime) { this.playingTime = playingTime; }
+    public void setIsAvailable(boolean available) { isAvailable = available; }
+    public void setComments(String comments) { this.comments = comments; }
+}
+```
+##### Child class `CD.java`
+```java
+public class CD extends Item {
+    private String artist;
+    private int numOfTracks;
+
+    // Getters
+    public String getArtist() { return artist; }
+    public int getNumOfTracks() { return numOfTracks; }
+
+    // Setters
+    public void setArtist(String artist) { this.artist = artist; }
+    public void setNumOfTracks(int numOfTracks) { this.numOfTracks = numOfTracks; }
+}
+```
+##### Child class `DVD.java`
+```java
+public class DVD extends Item {
+    private String director;
+
+    // Getters
+    public String getDirector() { return director; }
+
+    // Setters
+    public void setDirector(String director) { this.director = director; }
+}
+```
+In the examples above, we extracted the common fields and methods into class `Item`, let `DVD` and `CD` inherit class `Item` and then, add only `DVD` and `CD` specific fields and methods into class `DVD` and `CD`. By doing so the amount of repeated code is heavily reduced.
+
+Note: In the example the access modifier `protected` means protected methods or fields are only directly accessible to classes with in the same package, and in addition, protected members can be accessed via its child classes (i.e. sub-classes) out side of the current package (Oracle, 2020).
+
+Here's a detailed access level table for access modifiers (Oracle, 2020).
+|             Modifier              |       Class        |      Package       |     Sub-class      |       World        |
+| :-------------------------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+|             `public`              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|            `protected`            | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |                    |
+| no modifier <br/> package-private | :heavy_check_mark: | :heavy_check_mark: |                    |                    |
+|             `private`             | :heavy_check_mark: |                    |                    |                    |
+
+## Polymorphism
 Explain how inheritance and polymorphism makes programming easy to code and understand based on the level 2 and level 3 of your coursework. Do not forget to relate to the code where applicable.
 
 <div style="page-break-after: always;"></div>
 
 # References
-
+- Troelsen, A., 2012. "Understanding Inheritance and Polymorphism", Sixth edn, Apress, Berkeley, CA, pp. 213-251. Available at http://tinyurl.com/y288lopo.
+- Oracle, 2020, [Controlling Access to Members of a Class (The Java™ Tutorials > Learning the Java Language > Classes and Objects)](https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html). Accessed on 8th August 2020. Available at https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html.

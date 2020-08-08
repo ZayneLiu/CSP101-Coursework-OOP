@@ -4,8 +4,10 @@
 - [OOP](#oop)
 - [Differences between Procedural & Object-Oriented Programming Paradigm](#differences-between-procedural--object-oriented-programming-paradigm)
 - [Benefits of Inheritance and Polymorphism](#benefits-of-inheritance-and-polymorphism)
+- [References](#references)
 
 # Procedural
+The syntax and semantics for procedural programming language (i.e. `C`) will be described in the comments.
 ```c
 // Include statement.
 #include <stdio.h>
@@ -53,6 +55,8 @@ int main(int argc, const char *argv[]){
 ```
 
 # OOP
+The syntax and semantics for OOP (object-oriented programming language) (i.e. `Java`) will be described in the comments.
+
 ```java
 // Package info (namespace)
 package com.zayne.coursework;
@@ -65,16 +69,16 @@ public class Item {
     /** The title of the CD/DVD. */
     protected String title;
 
-    // Getters
+    // Property getter syntax
     public String getTitle() {
         return title;
     }
 
-    // Setters
+    // Property setter syntax
     public void setTitle(String title){
         this.title = title;
     }
-	// Function definition.
+	// Function declaration.
     public void Print(){
 
     }
@@ -86,12 +90,11 @@ import java.util.ArrayList;
 
 public class Database {
 	// Class member & ArrayList definition.
-    /** Store CDs/DVDs information */
     public static ArrayList<Item> itemList = new ArrayList<>(20) {
 		// Overriding add method.
         @Override
         public boolean add(Item item) {
-            // To simulate a fixed capacity as Array.
+            // `if` statement.
             if (itemList.size() == 20) {
                 System.out.println("CD list is full.");
                 return false;
@@ -100,31 +103,70 @@ public class Database {
         }
     };
 
-    /** Add CD/DVD items to the storage */
     public void addItem(Item item) {
+        // Accessing class instance method.
         itemList.add(item);
     }
 
-    /** Print all item in the database */
     public void ListAllItems() {
-		// Print function
+		// Print function.
         System.out.println("====== Items ======");
-        // Foreach loop to iterate through `itemList`
+        // `foreach` loop.
         for (var item : itemList) {
             item.Print();
         }
     }
 }
-
 ```
 
 # Differences between Procedural & Object-Oriented Programming Paradigm
 
-- Encapsulation
-  - OOP provides the `Class` concept to encapsulate both information and behaviours (fields & methods).
+Procedural programming paradigm is based on the concept of *"procedure call"*, which is essentially a series of steps or commands executing sequentially. Procedures (a.k.a. routines, subroutines, or functions) are the building blocks of procedural programming, with `if`, `while`, and `for` statement to implement *control flow*  [citation needed].
 
+Control flow can be categorized by their behaviour:
+- Branching (i.e. to determine which part of the program should be executed based on certain conditions)
+  - `if...else...`
+  - `switch...case...`
+- Iteration (i.e. to repeatedly execute identical operations)
+  - `for` / `foreach`
+  - ```c
+    // for loop in C.
+  	for (int i = 0; i<total_CDs; i++) {
+		printf("%s\n", cd_list[i].title);
+	}
+    ```
+___
+Object-oriented programming paradigm is based on the concept of modeling real world `objects`, where each kind of objects is called a `class`. Classes encapsulate both `data` (i.e. fields, attributes or properties) and `behaviour` (i.e. methods) of certain object types.
+```java
+public class Database {
+    // Data.
+    /** Store CDs/DVDs information */
+    public static ArrayList<Item> itemsList = new ArrayList<>(20);
+
+    // Behaviours - START
+    /** Add CD/DVD items to the storage */
+    public void addItem(Item item) {
+        itemsList.add(item);
+    }
+
+    /** Print all item in the database */
+    public void ListAllItems() {
+        System.out.println("====== Items ======");
+        // Foreach loop to iterate through `itemList`
+        for (var item : itemsList) {
+            item.Print();
+        }
+    }
+    // Behaviours - END
+}
+```
 
 Write a critical comparison on the major differences between two programming paradigms you used in level 1 and level 2. Do not forget to relate to your code where necessary.
 
 # Benefits of Inheritance and Polymorphism
 Explain how inheritance and polymorphism makes programming easy to code and understand based on the level 2 and level 3 of your coursework. Do not forget to relate to the code where applicable.
+
+<div style="page-break-after: always;"></div>
+
+# References
+

@@ -177,6 +177,25 @@ public class Database {
 
 Essentially, object-oriented programming empowers procedural programming with a much better way to describe and structure data while keeping the concepts of *Variables* and *Procedures*.
 
+Also, in the code below, each instance of `Item` class has a different set of values for their non-static properties (in this case, the value of protected member `title`), the keyword `this` is used to refer to the current instance, in order to access instance specific data.
+```java
+public class Item {
+    /** The title of the CD/DVD. */
+    protected String title;
+    // Getters
+    public String getTitle() {
+        return title;
+    }
+    // Setters
+    public void setTitle(String title){
+        this.title = title;
+    }
+    public void Print(){
+
+    }
+}
+```
+
 # Benefits of Inheritance and Polymorphism
 Explain how inheritance and polymorphism makes programming easy to code and understand based on the level 2 and level 3 of your coursework. Do not forget to relate to the code where applicable.
 

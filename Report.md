@@ -135,8 +135,22 @@ Control flow can be categorized by their behaviour:
 		printf("%s\n", cd_list[i].title);
 	}
     ```
+There is `struct` in C to define structural data, but is not as powerful as `Class` provided by OOP.
+```c
+struct CD
+{
+	int numberOfTracks;
+	bool isAvailable;
+	// Total time of playing.
+	int playingTime;
+	// String definition with fixed length.
+	char artist[Max_String_Length];
+	char title[Max_String_Length];
+	char comments[Max_String_Length];
+};
+```
 ___
-Object-oriented programming paradigm is based on the concept of modeling real world `objects`, where each kind of objects is called a `class`. Classes encapsulate both `data` (i.e. fields, attributes or properties) and `behaviour` (i.e. methods) of certain object types.
+Whereas object-oriented programming paradigm is based on the concept of modeling real world `objects`, where each kind of objects is called a `class`. Classes encapsulate both `data` (i.e. fields, attributes or properties) and `behaviour` (i.e. methods) of certain object types.
 ```java
 public class Database {
     // Data.
@@ -161,7 +175,7 @@ public class Database {
 }
 ```
 
-Write a critical comparison on the major differences between two programming paradigms you used in level 1 and level 2. Do not forget to relate to your code where necessary.
+Essentially, object-oriented programming empowers procedural programming with a much better way to describe and structure data while keeping the concepts of *Variables* and *Procedures*.
 
 # Benefits of Inheritance and Polymorphism
 Explain how inheritance and polymorphism makes programming easy to code and understand based on the level 2 and level 3 of your coursework. Do not forget to relate to the code where applicable.
